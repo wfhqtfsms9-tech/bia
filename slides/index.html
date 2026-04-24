@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<title>BIA Lecture Slides</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #1a1a1a; font-family: var(--font-serif); }
+  .slide { width: 1280px; height: 720px; background: var(--paper); position: relative; overflow: hidden; }
+  .slide-pad { padding: 80px 96px; height: 100%; display: flex; flex-direction: column; }
+
+  /* Mast bar present on every slide */
+  .mast { position: absolute; top: 0; left: 0; right: 0; padding: 18px 96px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ink); font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg2); }
+  .mast .mb { font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); text-transform: none; }
+  .foot { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 96px; display: flex; justify-content: space-between; border-top: 1px solid var(--ink-12); font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg3); }
+
+  /* Title slide */
+  .title { background: var(--ink); color: var(--paper); }
+  .title .mast { border-bottom-color: var(--paper-16); color: var(--paper-64); }
+  .title .mast .mb { color: var(--paper); }
+  .title .foot { border-top-color: var(--paper-16); color: var(--paper-64); }
+  .title .body { display: flex; flex-direction: column; justify-content: center; height: 100%; padding-top: 80px; }
+  .title .kick { font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--gold); display: inline-block; align-self: flex-start; }
+  .title h1 { font-family: var(--font-display); font-weight: 500; font-size: 96px; line-height: 1; letter-spacing: -0.025em; margin: 0 0 24px; color: var(--paper); max-width: 1000px; }
+  .title h1 em { font-style: italic; color: var(--gold-soft); font-weight: 400; }
+  .title .lede { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 28px; color: var(--paper-64); max-width: 700px; margin: 0; }
+
+  /* Section divider */
+  .section-d { background: var(--bone); }
+  .section-d .body { display: flex; flex-direction: column; justify-content: center; height: 100%; padding-top: 80px; }
+  .section-d .kick { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.24em; color: var(--gold-deep); text-transform: uppercase; margin-bottom: 24px; }
+  .section-d .num { font-family: var(--font-display); font-style: italic; font-size: 120px; color: var(--gold); line-height: 1; margin-bottom: 16px; font-weight: 400; }
+  .section-d h1 { font-family: var(--font-display); font-size: 88px; font-weight: 500; line-height: 1; letter-spacing: -0.025em; color: var(--ink); margin: 0; }
+
+  /* Content slide */
+  .body-pad { padding-top: 80px; padding-bottom: 80px; height: 100%; }
+  .h-kick { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--gold-deep); text-transform: uppercase; margin-bottom: 12px; }
+  h2.s-title { font-family: var(--font-display); font-size: 56px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; color: var(--ink); margin: 0 0 16px; }
+  .s-sub { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--fg2); margin: 0 0 40px; padding-bottom: 24px; border-bottom: 1px solid var(--ink); }
+
+  /* Three columns */
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .three-col .col { padding-top: 16px; border-top: 2px solid var(--ink); }
+  .three-col .cnum { font-family: var(--font-display); font-style: italic; font-size: 24px; color: var(--gold-deep); margin-bottom: 16px; }
+  .three-col h3 { font-family: var(--font-display); font-size: 30px; font-weight: 500; line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 16px; color: var(--ink); }
+  .three-col p { font-family: var(--font-serif); font-size: 16px; line-height: 1.5; color: var(--fg2); margin: 0; }
+
+  /* Quote slide */
+  .quote { background: var(--ink); color: var(--paper); }
+  .quote .mast { border-bottom-color: var(--paper-16); color: var(--paper-64); }
+  .quote .mast .mb { color: var(--paper); }
+  .quote .foot { border-top-color: var(--paper-16); color: var(--paper-64); }
+  .quote .body { display: flex; flex-direction: column; justify-content: center; height: 100%; padding-top: 80px; }
+  .quote .qmark { font-family: var(--font-display); font-style: italic; font-size: 160px; color: var(--gold); line-height: 0.5; margin-bottom: 32px; height: 60px; }
+  .quote blockquote { font-family: var(--font-display); font-weight: 400; font-style: italic; font-size: 56px; line-height: 1.15; color: var(--paper); margin: 0 0 32px; max-width: 1000px; }
+  .quote cite { font-family: var(--font-sans); font-style: normal; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft); }
+
+  /* Chart slide */
+  .chart-slide .row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: stretch; }
+  .chart-slide .chart { border: 1px solid var(--ink-12); background: var(--paper); }
+  .chart-slide .chart img { width: 100%; display: block; }
+  .chart-slide .takeaways { display: flex; flex-direction: column; gap: 16px; }
+  .chart-slide .ta { padding: 16px 0; border-bottom: 1px solid var(--ink-12); }
+  .chart-slide .ta:last-child { border: 0; }
+  .chart-slide .ta-k { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: var(--gold-deep); text-transform: uppercase; margin-bottom: 6px; }
+  .chart-slide .ta h4 { font-family: var(--font-display); font-size: 22px; font-weight: 500; margin: 0 0 6px; color: var(--ink); letter-spacing: -0.01em; }
+  .chart-slide .ta p { font-family: var(--font-serif); font-size: 14px; color: var(--fg2); margin: 0; line-height: 1.5; }
+
+  /* Closing */
+  .close .body { display: flex; flex-direction: column; justify-content: center; height: 100%; padding-top: 80px; }
+  .close h1 { font-family: var(--font-display); font-size: 96px; font-weight: 500; letter-spacing: -0.025em; margin: 0 0 24px; color: var(--ink); line-height: 1; }
+  .close h1 em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
+  .close .sig { display: flex; gap: 48px; padding-top: 32px; border-top: 1px solid var(--ink); margin-top: 48px; }
+  .close .sig div { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg2); }
+  .close .sig strong { display: block; font-family: var(--font-display); font-size: 18px; color: var(--ink); letter-spacing: -0.01em; text-transform: none; font-weight: 500; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<deck-stage>
+
+  <section class="slide title">
+    <div class="mast"><span class="mb">BIA Finance Club</span><span>The Library · April 23, 2026</span></div>
+    <div class="slide-pad body">
+      <div class="kick">LECTURE SERIES · NO. XLVII</div>
+      <h1>A Soft Landing,<br/><em>Re-examined.</em></h1>
+      <p class="lede">On the curve, the consumer, and the conditions for a durable expansion.</p>
+    </div>
+    <div class="foot"><span>Eleanor Vance · President</span><span>For Members Only</span></div>
+  </section>
+
+  <section class="slide section-d">
+    <div class="mast"><span class="mb">A Soft Landing, Re-examined</span><span>Section I</span></div>
+    <div class="slide-pad body">
+      <div class="kick">PART ONE</div>
+      <div class="num">I.</div>
+      <h1>The Consensus.</h1>
+    </div>
+    <div class="foot"><span>BIA Finance Club</span><span>02 / 06</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="mast"><span class="mb">A Soft Landing, Re-examined</span><span>Section I · The Consensus</span></div>
+    <div class="slide-pad body-pad">
+      <div class="h-kick">THREE CONDITIONS</div>
+      <h2 class="s-title">What the soft-landing thesis requires.</h2>
+      <p class="s-sub">Each, on its own, plausible. Together, increasingly demanding.</p>
+      <div class="three-col">
+        <div class="col">
+          <div class="cnum">i.</div>
+          <h3>A labor market that holds without re-igniting wages.</h3>
+          <p>Unemployment near a fifty-year low; prime-age participation now stalled after a year of gains.</p>
+        </div>
+        <div class="col">
+          <div class="cnum">ii.</div>
+          <h3>A consumer who slows but does not retreat.</h3>
+          <p>Aggregate spending intact. Card delinquencies at sub-$75K incomes at twelve-year highs.</p>
+        </div>
+        <div class="col">
+          <div class="cnum">iii.</div>
+          <h3>A curve that uninverts gracefully.</h3>
+          <p>Two-ten positive for six weeks. The un-inversion has historically been the signal.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>BIA Finance Club</span><span>03 / 06</span></div>
+  </section>
+
+  <section class="slide quote">
+    <div class="mast"><span class="mb">A Soft Landing, Re-examined</span><span>Interlude</span></div>
+    <div class="slide-pad body">
+      <div class="qmark">"</div>
+      <blockquote>The yield curve has been wrong before. It is rarely wrong twice in a row about the same thing.</blockquote>
+      <cite>— A managing director, name withheld</cite>
+    </div>
+    <div class="foot"><span>BIA Finance Club</span><span>04 / 06</span></div>
+  </section>
+
+  <section class="slide chart-slide">
+    <div class="mast"><span class="mb">A Soft Landing, Re-examined</span><span>Section II · The Evidence</span></div>
+    <div class="slide-pad body-pad">
+      <div class="h-kick">FIG. 1 · EQUITY INDEX, YEAR TO DATE</div>
+      <h2 class="s-title">Returns are concentrated. Breadth is not.</h2>
+      <p class="s-sub">The rally from January has been carried by fewer than two dozen names.</p>
+      <div class="row">
+        <div class="chart"><img src="../assets/chart-line.svg"/></div>
+        <div class="takeaways">
+          <div class="ta"><div class="ta-k">OBSERVATION</div><h4>Composite outpaces benchmark.</h4><p>The dispersion is the widest since Q4 2023.</p></div>
+          <div class="ta"><div class="ta-k">CAVEAT</div><h4>Equal-weight tells a duller story.</h4><p>Strip out the top twenty contributors and YTD return falls below 4%.</p></div>
+          <div class="ta"><div class="ta-k">IMPLICATION</div><h4>Watch breadth, not the index.</h4><p>The advance-decline line is the leading indicator we trust most.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>BIA Finance Club</span><span>05 / 06</span></div>
+  </section>
+
+  <section class="slide close">
+    <div class="mast"><span class="mb">A Soft Landing, Re-examined</span><span>Closing</span></div>
+    <div class="slide-pad body">
+      <div class="h-kick">IN CONCLUSION</div>
+      <h1>We remain<br/><em>cautiously short</em><br/>of consensus.</h1>
+      <div class="sig">
+        <div><strong>Eleanor Vance</strong>President · BIA</div>
+        <div><strong>Discussion to follow</strong>The Library · 7:30 PM</div>
+        <div><strong>Recording</strong>Posted to members' archive</div>
+      </div>
+    </div>
+    <div class="foot"><span>BIA Finance Club · MMXXVI</span><span>06 / 06</span></div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body></html>

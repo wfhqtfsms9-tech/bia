@@ -1,0 +1,22 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:24px;background:var(--paper);}
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  .sw{display:flex;flex-direction:column;gap:6px;}
+  .chip{aspect-ratio:1.6/1;border:1px solid var(--ink-12);}
+  .name{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--fg1);text-transform:uppercase;}
+  .hex{font-family:var(--font-mono);font-size:10px;color:var(--fg3);letter-spacing:-0.01em;}
+  .role{font-family:var(--font-serif);font-size:10px;color:var(--fg2);font-style:italic;}
+</style></head>
+<body>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:#0E1E3A"></div><div class="name">Data 1</div><div class="hex">Navy</div></div>
+    <div class="sw"><div class="chip" style="background:#A8884A"></div><div class="name">Data 2</div><div class="hex">Gold</div></div>
+    <div class="sw"><div class="chip" style="background:#7A2A2A"></div><div class="name">Data 3</div><div class="hex">Oxblood</div></div>
+    <div class="sw"><div class="chip" style="background:#2F5240"></div><div class="name">Data 4</div><div class="hex">Forest</div></div>
+    <div class="sw"><div class="chip" style="background:#4B5A78"></div><div class="name">Data 5</div><div class="hex">Slate</div></div>
+    <div class="sw"><div class="chip" style="background:#2F5240"></div><div class="name">Up</div><div class="role">positive</div></div>
+    <div class="sw"><div class="chip" style="background:#7A2A2A"></div><div class="name">Down</div><div class="role">negative</div></div>
+  </div>
+</body></html>

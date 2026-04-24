@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:24px;background:var(--paper);}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .tag{font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--ink);color:var(--ink);border-radius:2px;}
+  .tag.solid{background:var(--ink);color:var(--paper);}
+  .tag.gold{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+  .tag.dot::before{content:"";display:inline-block;width:6px;height:6px;background:var(--data-up);margin-right:6px;vertical-align:1px;border-radius:50%;}
+  .tag.dot-down::before{background:var(--data-down);}
+  .badge{font-family:var(--font-mono);font-size:11px;color:var(--ink);padding:4px 8px;background:var(--ink-08);letter-spacing:-0.01em;}
+</style></head>
+<body>
+  <div class="row">
+    <span class="tag">Members</span>
+    <span class="tag solid">Featured</span>
+    <span class="tag gold">Sponsor</span>
+    <span class="tag dot">Open</span>
+    <span class="tag dot-down dot">Closed</span>
+    <span class="badge">SPX +0.42%</span>
+    <span class="badge" style="background:transparent;border:1px solid var(--ink-24);">EQUITY · LONG</span>
+  </div>
+</body></html>

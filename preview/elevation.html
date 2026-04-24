@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:32px;background:var(--paper);}
+  .row{display:flex;gap:24px;align-items:flex-start;}
+  .item{display:flex;flex-direction:column;gap:8px;flex:1;}
+  .box{height:64px;background:var(--white);border:1px solid var(--ink-12);}
+  .floating{box-shadow:0 1px 0 rgba(14,30,58,.08), 0 12px 32px -16px rgba(14,30,58,.24);}
+  .modal{box-shadow:0 1px 0 rgba(14,30,58,.08), 0 32px 80px -32px rgba(14,30,58,.4);}
+  .lbl{font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--fg2);}
+  .desc{font-family:var(--font-serif);font-size:11px;color:var(--fg3);font-style:italic;}
+</style></head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box"></div><div class="lbl">Default · Hairline</div><div class="desc">1px ink-12 — used for cards, inputs</div></div>
+    <div class="item"><div class="box floating"></div><div class="lbl">Floating</div><div class="desc">For menus, popovers</div></div>
+    <div class="item"><div class="box modal"></div><div class="lbl">Modal</div><div class="desc">Modals only — used sparingly</div></div>
+  </div>
+</body></html>

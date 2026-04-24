@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  @page { size: landscape; margin: 0.5cm; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 48px;
+    box-sizing: border-box;
+  }
+  img { height: 80px; color: var(--ink); }
+  @media print {
+    body { min-height: auto; padding: 0; }
+  }
+</style></head>
+<body>
+  <img src="../assets/wordmark.svg"/>
+<script>
+  (async () => {
+    if (document.fonts && document.fonts.ready) {
+      try { await document.fonts.ready; } catch(e) {}
+    }
+    setTimeout(() => window.print(), 500);
+  })();
+</script>
+</body></html>

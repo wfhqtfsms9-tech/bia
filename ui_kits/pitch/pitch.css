@@ -1,0 +1,77 @@
+/* Pitch UI Kit — depends on /colors_and_type.css */
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); }
+
+.pitch-wrap { max-width: 1200px; margin: 0 auto; }
+
+/* HERO */
+.pitch-hero { background: var(--ink); color: var(--paper); padding: 120px 64px 96px; }
+.ph-eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.24em; color: var(--gold); text-transform: uppercase; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--gold); display: inline-block; }
+.pitch-hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 96px; line-height: 1; letter-spacing: -0.03em; margin: 0 0 32px; color: var(--paper); }
+.pitch-hero h1 em { font-style: italic; font-weight: 400; color: var(--gold-soft); }
+.ph-lede { font-family: var(--font-serif); font-size: 22px; line-height: 1.5; color: var(--paper-64); max-width: 680px; margin: 0 0 64px; font-weight: 300; }
+.ph-meta-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-top: 32px; border-top: 1px solid var(--paper-16); }
+.phm-k { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper-64); margin-bottom: 8px; }
+.phm-v { font-family: var(--font-display); font-size: 44px; font-weight: 500; color: var(--gold); letter-spacing: -0.02em; line-height: 1; }
+
+/* SECTION HEAD */
+.section-head { padding: 96px 64px 48px; border-bottom: 1px solid var(--ink); }
+.section-head .kicker { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 16px; }
+.section-head h2 { font-family: var(--font-display); font-size: 56px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.05; margin: 0 0 16px; color: var(--ink); }
+.section-head .section-sub { font-family: var(--font-serif); font-size: 18px; color: var(--fg2); font-style: italic; margin: 0; }
+
+/* STANDINGS */
+.standings { padding-bottom: 64px; }
+.st-table { width: 100%; border-collapse: collapse; margin: 0; }
+.st-table th { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 16px 64px 16px 0; color: var(--fg2); border-bottom: 1px solid var(--ink); text-align: left; }
+.st-table th.num { text-align: right; padding-right: 64px; }
+.st-table td { padding: 20px 64px 20px 0; border-bottom: 1px solid var(--ink-12); font-family: var(--font-serif); font-size: 16px; vertical-align: middle; }
+.st-table td:first-child { padding-left: 64px; }
+.st-table td:last-child { padding-right: 64px; }
+.st-table td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; letter-spacing: -0.01em; }
+.st-table td.up { color: #2F5240; }
+.st-table tr.leader td { background: var(--bone); }
+.rank { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--gold-deep); width: 80px; }
+.thesis { color: var(--fg2); }
+.sector-tag { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; padding: 4px 10px; border: 1px solid var(--ink-24); color: var(--ink); }
+.conv { display: inline-flex; gap: 3px; }
+.conv-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-12); }
+.conv-dot.on { background: var(--gold); }
+
+/* FEATURED TEAM */
+.featured-team { display: grid; grid-template-columns: 100px 1fr 380px; gap: 48px; padding: 96px 64px; background: var(--bone); border-top: 1px solid var(--ink); }
+.ft-side { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.ft-rank { font-family: var(--font-display); font-size: 96px; font-weight: 500; color: var(--gold); letter-spacing: -0.04em; line-height: 1; font-style: italic; }
+.ft-rule { width: 1px; flex: 1; min-height: 100px; background: var(--ink); }
+.ft-label { font-family: var(--font-sans); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; color: var(--fg2); text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+.ft-main {}
+.ft-kicker { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--gold-deep); text-transform: uppercase; margin-bottom: 16px; }
+.ft-main h2 { font-family: var(--font-display); font-size: 64px; font-weight: 500; line-height: 1; letter-spacing: -0.025em; margin: 0 0 16px; color: var(--ink); }
+.ft-thesis { font-family: var(--font-display); font-style: italic; font-size: 24px; color: var(--fg2); margin: 0 0 32px; }
+.ft-roster { display: flex; gap: 24px; padding: 24px 0; border-top: 1px solid var(--ink-12); border-bottom: 1px solid var(--ink-12); margin-bottom: 24px; }
+.ft-member { display: flex; gap: 12px; align-items: center; flex: 1; }
+.ft-pic { width: 44px; height: 44px; border: 1px solid var(--ink-12); overflow: hidden; flex-shrink: 0; }
+.ft-pic img { width: 100%; height: 100%; object-fit: cover; }
+.ft-name { font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--ink); }
+.ft-firm { font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg3); }
+.ft-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 16px 0 24px; }
+.fts-k { font-family: var(--font-sans); font-size: 9px; font-weight: 600; letter-spacing: 0.16em; color: var(--fg2); text-transform: uppercase; margin-bottom: 6px; }
+.fts-v { font-family: var(--font-display); font-size: 24px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+.fts-v.mono { font-family: var(--font-mono); font-size: 20px; font-weight: 500; }
+.fts-v.up { color: #2F5240; }
+.ft-cta { font-family: var(--font-serif); font-size: 18px; color: var(--ink); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+.ft-chart { border: 1px solid var(--ink-12); background: var(--paper); align-self: start; }
+.ft-chart img { width: 100%; display: block; }
+
+/* JUDGES */
+.judges { background: var(--ink); color: var(--paper); padding-bottom: 96px; }
+.judges .section-head { border-bottom-color: var(--paper-16); }
+.judges .section-head h2 { color: var(--paper); }
+.judges .section-head .kicker { color: var(--gold); }
+.judge-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding: 48px 64px 0; }
+.judge-card {}
+.judge-portrait { aspect-ratio: 1; border: 1px solid var(--paper-16); margin-bottom: 24px; overflow: hidden; }
+.judge-portrait img { width: 100%; height: 100%; object-fit: cover; filter: invert(1) hue-rotate(180deg); opacity: 0.85; }
+.judge-card h4 { font-family: var(--font-display); font-size: 28px; font-weight: 500; margin: 0 0 6px; color: var(--paper); letter-spacing: -0.015em; }
+.judge-firm { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 12px; }
+.judge-note { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--paper-64); margin: 0; }

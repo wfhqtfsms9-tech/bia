@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=1280"/>
+<title>BIA Finance Club</title>
+
+<meta name="ext-resource-dependency" content="../../assets/hero-bg.svg" data-resource-id="heroBg" />
+<meta name="ext-resource-dependency" content="../../assets/portrait-placeholder.svg" data-resource-id="portrait" />
+
+<link rel="stylesheet" href="../../colors_and_type.css"/>
+<link rel="stylesheet" href="marketing.css"/>
+
+<template id="__bundler_thumbnail" data-bg-color="#0E1E3A">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0E1E3A"/>
+    <rect x="360" y="200" width="480" height="400" fill="none" stroke="#A8884A" stroke-width="2"/>
+    <rect x="380" y="220" width="440" height="360" fill="none" stroke="#A8884A" stroke-width="1"/>
+    <text x="600" y="440" text-anchor="middle" font-family="'Bodoni Moda','Didot',serif" font-size="180" font-weight="500" fill="#F5F0E6" letter-spacing="-4">BIA</text>
+    <text x="600" y="500" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="600" letter-spacing="6" fill="#A8884A">FINANCE CLUB</text>
+  </svg>
+</template>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+function Nav() {
+  return (
+    <nav className="bia-nav">
+      <a className="brand" href="#top">
+        <span className="brand-b">BIA</span>
+        <span className="brand-rule" />
+        <span className="brand-sm">Finance Club</span>
+      </a>
+      <ul className="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Calendar</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button className="nav-cta">Apply</button>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="bia-hero" id="top">
+      <div className="hero-bg">
+        <img src={window.__resources.heroBg} alt="" />
+      </div>
+      <div className="hero-inner">
+        <div className="hero-eyebrow">ESTABLISHED 2019 · NEW YORK</div>
+        <h1 className="hero-h1">A society for the <em>serious student</em> of markets.</h1>
+        <p className="hero-lede">Founded by analysts, traders, and investors in their first decade of practice. We meet Thursdays, publish weekly, and compete each spring.</p>
+        <div className="hero-actions">
+          <button className="btn-primary">Apply for Membership</button>
+          <a className="btn-ghost-light" href="#events">View Calendar →</a>
+        </div>
+        <div className="hero-meta">
+          <div><span className="num">147</span><span className="lbl">Members</span></div>
+          <div><span className="num">38</span><span className="lbl">Events / yr</span></div>
+          <div><span className="num">$2.4M</span><span className="lbl">Pitch capital</span></div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const EVENTS = [
+  { date: "MAY 09", day: "THU", time: "6:30 PM", title: "Macro Outlook: Q3", speaker: "James Holloway, Citadel", tag: "MEMBERS · GUEST OK", featured: true },
+  { date: "MAY 16", day: "THU", time: "6:30 PM", title: "Reading: Graham & Dodd, Ch. 14", speaker: "Members-only seminar", tag: "MEMBERS" },
+  { date: "MAY 23", day: "THU", time: "7:00 PM", title: "The Distressed Cycle", speaker: "Helena Park, Oaktree", tag: "MEMBERS · GUEST OK" },
+  { date: "JUN 06", day: "THU", time: "6:30 PM", title: "Pitch Workshop", speaker: "Spring Competition prep", tag: "PARTICIPANTS" },
+  { date: "JUN 20", day: "FRI", time: "6:00 PM", title: "Spring Pitch Competition", speaker: "Six teams · Three judges", tag: "OPEN", featured: true },
+];
+function EventsList() {
+  return (
+    <section className="bia-events" id="events">
+      <header className="section-head">
+        <div className="kicker">CALENDAR</div>
+        <h2>Upcoming</h2>
+        <p className="section-sub">Members and one guest, unless otherwise noted. The Library, 47 W 45th St, unless otherwise noted.</p>
+      </header>
+      <ul className="event-list">
+        {EVENTS.map((e, i) => (
+          <li key={i} className={"event-row" + (e.featured ? " featured" : "")}>
+            <div className="event-date">
+              <div className="ed-month">{e.date}</div>
+              <div className="ed-day">{e.day} · {e.time}</div>
+            </div>
+            <div className="event-body"><h3>{e.title}</h3><p>{e.speaker}</p></div>
+            <div className="event-tag">{e.tag}</div>
+            <a className="event-arrow" href="#">→</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+const RESEARCH = [
+  { date: "Apr 18, 2026", kicker: "MARKETS", title: "Three Things This Week", author: "Marcus Chen", read: "4 min" },
+  { date: "Apr 11, 2026", kicker: "EQUITIES", title: "On the Quiet Bid Beneath Mid-Caps", author: "Priya Iyer", read: "9 min" },
+  { date: "Apr 04, 2026", kicker: "CREDIT", title: "What the Distressed Desk is Watching", author: "James Holloway", read: "7 min" },
+  { date: "Mar 28, 2026", kicker: "MACRO", title: "A Soft Landing, Re-examined", author: "Eleanor Vance", read: "12 min" },
+];
+function ResearchList() {
+  return (
+    <section className="bia-research" id="research">
+      <header className="section-head">
+        <div className="kicker">RESEARCH</div>
+        <h2>This Week's Commentary</h2>
+        <p className="section-sub">Written by members, for members. Three things worth your attention.</p>
+      </header>
+      <div className="research-grid">
+        {RESEARCH.map((r, i) => (
+          <article key={i} className={"research-card" + (i === 0 ? " feat" : "")}>
+            <div className="r-meta"><span className="kicker">{r.kicker}</span><span className="r-date">{r.date}</span></div>
+            <h3>{r.title}</h3>
+            {i === 0 && (<p className="r-excerpt">A quick note on the rate path, dollar strength, and why the curve isn't telling us what it used to. Plus: one chart that's been on our desk all week.</p>)}
+            <div className="r-foot"><span className="r-author">By {r.author}</span><span className="r-read">{r.read} read</span></div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const LEADERS = [
+  { name: "Eleanor Vance", role: "President", firm: "Goldman Sachs · M&A" },
+  { name: "Marcus Chen", role: "Editor, Commentary", firm: "Bridgewater · Macro" },
+  { name: "Priya Iyer", role: "Director of Research", firm: "Point72 · Equities" },
+  { name: "James Holloway", role: "Chair, Pitch Competition", firm: "Citadel · Credit" },
+  { name: "Sofia Reyes", role: "Membership", firm: "BlackRock · Fixed Income" },
+  { name: "Daniel Okafor", role: "Treasurer", firm: "Morgan Stanley · IBD" },
+];
+function Leadership() {
+  return (
+    <section className="bia-leadership" id="about">
+      <header className="section-head">
+        <div className="kicker">ABOUT</div>
+        <h2>Leadership, 2026</h2>
+        <p className="section-sub">An elected committee of nine. Two-year terms.</p>
+      </header>
+      <div className="leader-grid">
+        {LEADERS.map((l, i) => (
+          <article key={i} className="leader-card">
+            <div className="leader-portrait"><img src={window.__resources.portrait} alt="" /></div>
+            <div className="leader-meta">
+              <h4>{l.name}</h4>
+              <div className="leader-role">{l.role}</div>
+              <div className="leader-firm">{l.firm}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Membership() {
+  return (
+    <section className="bia-membership" id="membership">
+      <div className="mem-inner">
+        <div className="mem-left">
+          <div className="kicker gold-on-dark">MEMBERSHIP</div>
+          <h2>We read every application.</h2>
+          <p className="lede">Membership is by application, twice yearly — March and September. We look for rigor of thought, not pedigree.</p>
+          <div className="mem-actions">
+            <button className="btn-gold">Apply for Membership</button>
+            <a className="btn-ghost-light" href="#">Read criteria →</a>
+          </div>
+        </div>
+        <div className="mem-right">
+          <div className="criteria">
+            <div className="crit-row"><div className="crit-num">01</div><div><h4>A point of view</h4><p>An essay (1,000 words) on a market you understand and one you don't.</p></div></div>
+            <div className="crit-row"><div className="crit-num">02</div><div><h4>References</h4><p>Two members in good standing, or two professional references.</p></div></div>
+            <div className="crit-row"><div className="crit-num">03</div><div><h4>Time</h4><p>Members are expected at two-thirds of Thursday meetings.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section className="bia-contact" id="contact">
+      <div className="contact-inner">
+        <div className="contact-left">
+          <div className="kicker">CONTACT</div>
+          <h2>By post, or by mail.</h2>
+          <div className="contact-block"><div className="ck">CORRESPONDENCE</div><p className="contact-line">The Editor<br/>BIA Finance Club<br/>47 W 45th St, Suite 8<br/>New York, NY 10036</p></div>
+          <div className="contact-block"><div className="ck">EDITORIAL</div><p className="contact-line"><a href="mailto:editor@biaclub.org">editor@biaclub.org</a></p></div>
+          <div className="contact-block"><div className="ck">MEMBERSHIP</div><p className="contact-line"><a href="mailto:membership@biaclub.org">membership@biaclub.org</a></p></div>
+        </div>
+        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+          <div className="kicker">A NOTE</div>
+          <h3>Send a message</h3>
+          <div className="form-field"><label>Full Name</label><input placeholder="Jane Holloway"/></div>
+          <div className="form-field"><label>Email</label><input placeholder="j.holloway@example.com"/></div>
+          <div className="form-field"><label>Subject</label><input placeholder="Speaker enquiry, sponsorship, etc."/></div>
+          <div className="form-field"><label>Message</label><textarea rows="4" placeholder="A few sentences."/></div>
+          <button className="btn-primary" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bia-footer">
+      <div className="footer-top">
+        <div className="footer-brand">
+          <div className="fb-mark">BIA</div>
+          <div className="fb-tag">Finance Club · New York · MMXIX</div>
+          <p className="fb-mission">A society for the serious student of markets.</p>
+        </div>
+        <div className="footer-cols">
+          <div><div className="fc-h">The Club</div><a>About</a><a>Leadership</a><a>Calendar</a><a>Membership</a></div>
+          <div><div className="fc-h">Publications</div><a>Commentary</a><a>Research</a><a>Pitch Annual</a><a>Archive</a></div>
+          <div><div className="fc-h">Contact</div><a>Editorial</a><a>Membership</a><a>Sponsorship</a><a>Press</a></div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <span>© MMXXVI BIA Finance Club. All rights reserved.</span>
+        <span>Set in Bodoni Moda &amp; Source Serif. Published in New York.</span>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  return (<div><Nav/><Hero/><EventsList/><ResearchList/><Leadership/><Membership/><Contact/><Footer/></div>);
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

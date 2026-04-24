@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=1280"/>
+<title>Apply — BIA Finance Club</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   BIA Finance Club — Apply page, standalone
+   ========================================================= */
+:root {
+  --ink:        #0E1E3A;
+  --ink-deep:   #08152D;
+  --ink-soft:   #1A2D52;
+  --gold:       #A8884A;
+  --gold-deep:  #8A6E36;
+  --gold-soft:  #C4A567;
+  --paper:      #F5F0E6;
+  --bone:       #EDE6D6;
+  --white:      #FFFFFF;
+
+  --neutral-500: #67635A;
+  --neutral-600: #4B473F;
+
+  --ink-08:     rgba(14, 30, 58, 0.08);
+  --ink-12:     rgba(14, 30, 58, 0.12);
+  --ink-16:     rgba(14, 30, 58, 0.16);
+  --ink-24:     rgba(14, 30, 58, 0.24);
+  --paper-16:   rgba(245, 240, 230, 0.16);
+  --paper-64:   rgba(245, 240, 230, 0.64);
+
+  --fg1:  var(--ink);
+  --fg2:  var(--neutral-600);
+  --fg3:  var(--neutral-500);
+
+  --font-display: 'Bodoni Moda', 'Bodoni 72', 'Didot', 'Times New Roman', serif;
+  --font-serif:   'Source Serif 4', 'Source Serif Pro', 'Georgia', serif;
+  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', 'Menlo', monospace;
+
+  --ease:     cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --container: 1200px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--fg1);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--ink); color: var(--paper); }
+
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ===== NAV ===== */
+.bia-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px;
+  border-bottom: 1px solid var(--ink);
+  background: rgba(245, 240, 230, 0.92);
+  backdrop-filter: blur(12px);
+  position: sticky; top: 0; z-index: 50;
+}
+.brand { display: flex; align-items: baseline; gap: 12px; text-decoration: none; }
+.brand-b { font-family: var(--font-display); font-size: 26px; font-weight: 500; letter-spacing: -0.5px; color: var(--ink); }
+.brand-rule { width: 1px; height: 22px; background: var(--ink); align-self: center; }
+.brand-sm { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg2); }
+.nav-links { display: flex; gap: 36px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; text-transform: uppercase; transition: color var(--dur-fast) var(--ease); position: relative; padding: 4px 0; }
+.nav-links a:hover { color: var(--gold-deep); }
+.nav-links a:hover::after { content:""; position:absolute; left:0; right:0; bottom:-2px; height:1px; background: var(--gold); }
+.nav-cta { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--paper); padding: 12px 22px; border: none; cursor: pointer; transition: background var(--dur-fast) var(--ease); text-decoration: none; display: inline-block; }
+.nav-cta:hover { background: var(--ink-soft); }
+
+/* ===== APPLY PAGE ===== */
+.apply-page { background: var(--paper); min-height: calc(100vh - 80px); padding: 80px 0 120px; }
+.apply-shell { max-width: 760px; margin: 0 auto; padding: 0 48px; }
+.apply-back { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg2); text-decoration: none; display: inline-block; margin-bottom: 48px; transition: color var(--dur-fast) var(--ease); }
+.apply-back:hover { color: var(--ink); }
+.apply-head { border-bottom: 1px solid var(--ink); padding-bottom: 40px; margin-bottom: 56px; }
+.apply-head .kicker { margin-bottom: 16px; display: block; }
+.apply-head h1 { font-family: var(--font-display); font-size: 64px; font-weight: 500; line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 20px; color: var(--ink); }
+.apply-head .apply-lede { font-family: var(--font-serif); font-size: 20px; line-height: 1.5; color: var(--fg2); max-width: 560px; margin: 0; font-style: italic; font-weight: 300; }
+
+.apply-form .form-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+.apply-form .form-field label { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg2); }
+.apply-form .form-field .field-num { color: var(--gold-deep); font-family: var(--font-mono); font-size: 10px; margin-right: 10px; letter-spacing: 0; }
+.apply-form input, .apply-form textarea, .apply-form select {
+  font-family: var(--font-serif); font-size: 17px; padding: 12px 0;
+  border: none; border-bottom: 1px solid var(--ink);
+  background: transparent; color: var(--ink); outline: none;
+  border-radius: 0; -webkit-appearance: none; appearance: none;
+  transition: border-bottom-color var(--dur-fast) var(--ease);
+}
+.apply-form select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%230E1E3A' fill='none' stroke-width='1.5'/></svg>");
+  background-repeat: no-repeat; background-position: right 4px center; padding-right: 28px; cursor: pointer;
+}
+.apply-form textarea { resize: vertical; min-height: 140px; line-height: 1.5; }
+.apply-form input:focus, .apply-form textarea:focus, .apply-form select:focus {
+  border-bottom-color: var(--gold); border-bottom-width: 2px; padding-bottom: 11px;
+}
+.apply-form .field-hint { font-family: var(--font-serif); font-size: 13px; color: var(--fg3); font-style: italic; margin-top: 4px; }
+
+.apply-form .apply-submit { margin-top: 16px; }
+.apply-form .apply-submit button {
+  background: var(--ink); color: var(--paper);
+  font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 16px 32px; border: 1px solid var(--ink); cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+}
+.apply-form .apply-submit button:hover:not(:disabled) { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.apply-form .apply-submit button:disabled { opacity: 0.55; cursor: not-allowed; }
+.apply-note { font-family: var(--font-serif); font-size: 13px; margin-top: 24px; font-style: italic; }
+.apply-note.err { color: #7A2A2A; }
+
+.apply-confirmation { text-align: left; padding: 80px 0; border-top: 1px solid var(--ink); }
+.apply-confirmation .kicker { margin-bottom: 20px; display: block; }
+.apply-confirmation h2 { font-family: var(--font-display); font-size: 48px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 24px; }
+.apply-confirmation p { font-family: var(--font-serif); font-size: 20px; line-height: 1.5; color: var(--fg2); max-width: 520px; margin: 0 0 32px; font-weight: 300; }
+.apply-confirmation .sig { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--ink); }
+
+/* ===== FOOTER ===== */
+.bia-footer { background: var(--ink); color: var(--paper); padding: 80px 0 32px; }
+.footer-top { max-width: var(--container); margin: 0 auto; padding: 0 48px 48px; display: grid; grid-template-columns: 1.2fr 2fr; gap: 64px; border-bottom: 1px solid var(--paper-16); }
+.fb-mark { font-family: var(--font-display); font-size: 56px; font-weight: 500; letter-spacing: -0.02em; color: var(--paper); }
+.fb-tag { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin: 8px 0 24px; }
+.fb-mission { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--paper-64); margin: 0; max-width: 360px; line-height: 1.3; }
+.footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.fc-h { font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.footer-cols a { display: block; font-family: var(--font-serif); font-size: 15px; color: var(--paper); padding: 6px 0; text-decoration: none; transition: color var(--dur-fast) var(--ease); }
+.fc-plain { display: block; font-family: var(--font-serif); font-size: 15px; color: var(--paper-64); padding: 6px 0; font-style: italic; }
+.footer-cols a:hover { color: var(--gold-soft); }
+.footer-bottom { max-width: var(--container); margin: 32px auto 0; padding: 0 48px; display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: 11px; color: var(--paper-64); letter-spacing: 0.04em; }
+</style>
+</head>
+<template id="__bundler_thumbnail" data-bg-color="#F5F0E6">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F5F0E6"/>
+    <text x="600" y="380" text-anchor="middle" font-family="Bodoni Moda, Didot, Times New Roman, serif" font-size="220" font-weight="500" fill="#0E1E3A" letter-spacing="-4">BIA</text>
+    <line x1="380" y1="440" x2="820" y2="440" stroke="#A8884A" stroke-width="2"/>
+    <text x="600" y="500" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="600" fill="#A8884A" letter-spacing="8">APPLY</text>
+  </svg>
+</template>
+<body data-screen-label="02 Apply (Standalone)">
+
+<nav class="bia-nav">
+  <a class="brand" href="index.html">
+    <span class="brand-b">BIA</span>
+    <span class="brand-rule"></span>
+    <span class="brand-sm">Finance Club</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#calendar">Calendar</a></li>
+    <li><a href="index.html#research">Research</a></li>
+    <li><a href="index.html#membership">Membership</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="apply-standalone.html">Apply</a>
+</nav>
+
+<main class="apply-page">
+  <div class="apply-shell">
+    <a href="index.html" class="apply-back">← Back to Home</a>
+
+    <header class="apply-head">
+      <span class="kicker">MEMBERSHIP APPLICATION</span>
+      <h1>Apply to the Club.</h1>
+      <p class="apply-lede">A few short questions. We read every application.</p>
+    </header>
+
+    <form id="apply-form" class="apply-form" method="POST" action="https://formspree.io/f/xkokygap">
+      <div class="form-field">
+        <label><span class="field-num">01</span>Full Name</label>
+        <input type="text" name="name" required placeholder="Anh Nguyen" />
+      </div>
+
+      <div class="form-field">
+        <label><span class="field-num">02</span>Email</label>
+        <input type="email" name="email" required placeholder="you@my.bridgeportacademy.org" />
+      </div>
+
+      <div class="form-field">
+        <label><span class="field-num">03</span>Grade</label>
+        <select name="grade" required>
+          <option value="" disabled selected>Select your grade</option>
+          <option>9th</option>
+          <option>10th</option>
+          <option>11th</option>
+          <option>12th</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label><span class="field-num">04</span>What interests you most?</label>
+        <select name="interest" required>
+          <option value="" disabled selected>Choose one</option>
+          <option>Stocks &amp; Equities</option>
+          <option>Crypto &amp; Digital Assets</option>
+          <option>Real Estate</option>
+          <option>Macroeconomics</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label><span class="field-num">05</span>Why do you want to join BIA Finance Club?</label>
+        <textarea name="message" required rows="6" placeholder="A thoughtful paragraph or two."></textarea>
+        <div class="field-hint">200–300 words.</div>
+      </div>
+
+      <div class="form-field">
+        <label><span class="field-num">06</span>How did you hear about us?</label>
+        <input type="text" name="heard_from" placeholder="A friend, a teacher, a flyer…" />
+      </div>
+
+      <input type="hidden" name="_subject" value="New BIA Finance Club application" />
+      <input type="hidden" name="subject" value="New BIA Finance Club application" />
+
+      <div class="apply-submit">
+        <button type="submit" id="apply-submit-btn">Submit Application</button>
+      </div>
+      <p id="apply-error" class="apply-note err" style="display:none;"></p>
+    </form>
+
+    <div id="apply-confirmation" class="apply-confirmation" style="display:none;" role="status" aria-live="polite">
+      <span class="kicker">RECEIVED</span>
+      <h2>Thank you for applying to BIA Finance Club.</h2>
+      <p>Your message has been received.<br>We'll get back to you shortly.</p>
+      <div class="sig">— The Editors</div>
+    </div>
+  </div>
+</main>
+
+<footer class="bia-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="fb-mark">BIA</div>
+      <div class="fb-tag">Finance Club · Bridgeport, CT · MMXXV</div>
+      <p class="fb-mission">A society for the serious student of markets.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <div class="fc-h">The Club</div>
+        <a href="index.html#about">About</a>
+        <a href="index.html#about">Leadership</a>
+        <a href="index.html#calendar">Calendar</a>
+        <a href="index.html#membership">Membership</a>
+      </div>
+      <div>
+        <div class="fc-h">Publications</div>
+        <span class="fc-plain">Coming Soon</span>
+      </div>
+      <div>
+        <div class="fc-h">Contact</div>
+        <a href="index.html#membership">Membership</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 BIA Finance Club. All rights reserved.</span>
+    <span>Bridgeport International Academy.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('apply-form');
+  var confirmation = document.getElementById('apply-confirmation');
+  var errorEl = document.getElementById('apply-error');
+  var btn = document.getElementById('apply-submit-btn');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    errorEl.style.display = 'none';
+    errorEl.textContent = '';
+    btn.disabled = true;
+    var originalLabel = btn.textContent;
+    btn.textContent = 'Sending…';
+
+    try {
+      var res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        confirmation.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        var body = await res.json().catch(function () { return {}; });
+        var msg = (body && body.errors && body.errors.map(function (x) { return x.message; }).join(', ')) ||
+                  'Something went wrong. Please try again.';
+        errorEl.textContent = msg;
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      }
+    } catch (err) {
+      errorEl.textContent = 'Network error. Please check your connection and try again.';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    }
+  });
+})();
+</script>
+</body>
+</html>
